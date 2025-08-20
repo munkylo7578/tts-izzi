@@ -22,9 +22,9 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 @app.get("/tts")
 def tts(text: str = "This is OpenAI TTS served as a blob."):
     response = client.audio.speech.create(
-        model="gpt-4o-mini-tts",
+        model="tts-1",
         voice="alloy",
-        input=text
+        input=text,
     )
     audio_bytes = response.read()
     return Response(content=audio_bytes, media_type="audio/mpeg")

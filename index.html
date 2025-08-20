@@ -12,7 +12,7 @@
   <script>
     async function playTTS() {
       const text = document.getElementById("text").value;
-      const response = await fetch(`http://127.0.0.1:8000/tts?text=${encodeURIComponent(text)}`);
+      const response = await fetch(`https://tts.munkylo.xyz/tts?text=${encodeURIComponent(text)}`);
       const blob = await response.blob();
 
       // Convert blob to audio and play
