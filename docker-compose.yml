@@ -12,7 +12,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.tts-app.rule=Host(`tts.munkylo.xyz`)"
+      - "traefik.http.routers.tts-app.tls=true"
       - "traefik.http.routers.tts-app.entrypoints=https"
+      - "traefik.http.routers.tts-app.tls.certresolver=cloudflare"
       - "traefik.http.services.tts-app.loadbalancer.server.port=8080"
     networks:
       - proxy
