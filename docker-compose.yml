@@ -6,7 +6,7 @@ services:
     container_name: tts-app
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}  # Load from .env
     labels:
@@ -15,7 +15,7 @@ services:
       - "traefik.http.routers.tts-app.tls=true"
       - "traefik.http.routers.tts-app.entrypoints=https"
       - "traefik.http.routers.tts-app.tls.certresolver=cloudflare"
-      - "traefik.http.services.tts-app.loadbalancer.server.port=8080"
+      - "traefik.http.services.tts-app.loadbalancer.server.port=8081"
     networks:
       - proxy
 
