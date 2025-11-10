@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  tts-app:
+    build: .
+    container_name: tts-app
+    restart: unless-stopped
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Load from .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tts-app.rule=Host(`tts.munkylo.xyz`)"
+      - "traefik.http.routers.tts-app.entrypoints=web"
+      - "traefik.http.services.tts-app.loadbalancer.server.port=8080"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
