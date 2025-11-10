@@ -13,8 +13,8 @@ services:
       - "traefik.http.routers.tts-app.entrypoints=web"
       - "traefik.http.services.tts-app.loadbalancer.server.port=8080"
     networks:
-      - web
+      - proxy
 
 networks:
-  web:
+  proxy:
     external: true
